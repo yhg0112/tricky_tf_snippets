@@ -1,5 +1,5 @@
 # tricky_tf_snippets
-##few snippets for tricky tensorflow coding
+## few snippets for tricky tensorflow coding
 
 1. pairwise distance with batched tensor
     * get pairwise distances of every pair in batched tensor
