@@ -54,8 +54,8 @@ def pairwise_distance_euclidean(X):
     X1_T = tf.tile(X1_T, [batch_size, 1, 1])
 
     # get distance
-    res = tf.sqrt(tf.square(X1 - X1_T))
-    res = tf.reduce_sum(res, 2)
+    res = tf.square(X1 - X1_T)
+    res = tf.sqrt(tf.reduce_sum(res, 2))
 
     return res
 
