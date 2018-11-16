@@ -46,15 +46,15 @@ def pairwise_distance_euclidean(X):
     batch_size = tf.shape(X)[0] # get N first
 
     # expand dim of X and X_T
-    X = tf.expand_dims(X, 1)
-    X_T = tf.expand_dims(X, 0)
+    X1 = tf.expand_dims(X, 1)
+    X1_T = tf.expand_dims(X, 0)
 
     # tile X and X_T as batch size
-    X = tf.tile(X, [1, batch_size, 1])
-    X_T = tf.tile(X_T, [batch_size, 1, 1])
+    X1 = tf.tile(X1, [1, batch_size, 1])
+    X1_T = tf.tile(X1_T, [batch_size, 1, 1])
 
     # get distance
-    res = tf.sqrt(tf.square(X - X_T))
+    res = tf.sqrt(tf.square(X1 - X1_T))
     res = tf.reduce_sum(res, 2)
 
     return res
@@ -74,15 +74,15 @@ def pairwise_distance_binary_xentropy(X):
     batch_size = tf.shape(X)[0]  # get N first
 
     # expand dim of X and X_T
-    X = tf.expand_dims(X, 1)
-    X_T = tf.expand_dims(X, 0)
+    X1 = tf.expand_dims(X, 1)
+    X1_T = tf.expand_dims(X, 0)
 
     # tile X and X_T as batch size
-    X = tf.tile(X, [1, batch_size, 1])
-    X_T = tf.tile(X_T, [batch_size, 1, 1])
+    X1 = tf.tile(X1, [1, batch_size, 1])
+    X1_T = tf.tile(X1_T, [batch_size, 1, 1])
 
     # get distance
-    res = -1.*(X*tf.log(1e-10 + X_T) + (1 - X)*tf.log(1e-10 + 1 - X_T))
+    res = -1.*(X1*tf.log(1e-10 + X1_T) + (1 - X1)*tf.log(1e-10 + 1 - X1_T))
     res = tf.reduce_sum(res, 2)
 
     return res
