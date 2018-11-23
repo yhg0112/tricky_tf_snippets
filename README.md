@@ -7,5 +7,10 @@
     * distant function is given as D(x1, x2), 
     where x1 and x2 are vectors with a shape of [dim]
     
+2. tensorflow estimator 
+    * input fn
+    * model fn
+    * metrics
+    
 
 
